@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -52,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'djangoProjectLab6.urls'
+ROOT_URLCONF = 'djangoProject.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangoProjectLab6.wsgi.application'
+WSGI_APPLICATION = 'djangoProject.wsgi.application'
 
 
 # Database
@@ -80,13 +82,14 @@ WSGI_APPLICATION = 'djangoProjectLab6.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':  'SoftwareEngi',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME':  os.getenv('SoftwareEngi'),
+        'USER':os.getenv('postgres'),
+        'PASSWORD': os.getenv('1234'),
+        'HOST': os.getenv('localhost'),
+        'PORT': os.getenv('5432'),
     }
 }
+
 
 
 # Password validation
